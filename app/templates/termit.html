@@ -1,8 +1,17 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<!-- {% load static %} -->
 
+{% load static %}
+
+<style>
+    body {
+        background-image: url("{% static 'images/kuva4.jpg' %}");
+        background-size: cover; /* Tämä tekee kuvan peittämään koko taustan */
+        background-repeat: no-repeat; /* Varmistaa, että kuvaa ei toisteta */
+        background-position: center; /* Keskittää kuvan */
+    }
+</style>
 <h1>Ohjelmointitermit</h1>
 {{x}}
 <h2>Löydä ohjelmointitermit ja niiden selitykset</h2>
@@ -11,9 +20,9 @@
 
 <div class="card" style="width: 50rem;">
     <div class="card-body">
-        <h3 class="card-title">Termi{{t.termi}} </h3>
+        <h5 class="card-title">Termi: {{t.termi}} </h5>
         <h5 class="card-text">Term: {{t.term}}</h5>
-        <p class="card-text">Selitys: {{t.selitys}}</p>
+        <h5 class="card-text">Selitys: {{t.selitys}}</h5>
         <a href="/edit-treeniliikkeet-get/{{t.id}}/" class="btn btn-primary">Edit</a>
 
         <a href="/confirm-delete-treeniliikkeet/{{t.id}}/" class="btn btn-danger">Delete</a>

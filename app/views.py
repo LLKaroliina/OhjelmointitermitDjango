@@ -12,8 +12,8 @@ from .models import Termit
 def landingview(request):
     return render(request, 'landingpage.html')
 def termitview(request):
-    muuttuja = "Tämä on merkkijono"
-    context = {'x': muuttuja}
+    termit= Termit.objects.all()
+    context = {'termit': termit}
     return render(request, 'termit.html', context)
 # def termitview(request):
 #     termit = Termit.objects.all()
