@@ -12,10 +12,19 @@
         background-position: center; /* Keskittää kuvan */
     }
 </style>
-<h1>Ohjelmointitermit</h1>
-{{x}}
-<h2>Löydä ohjelmointitermit ja niiden selitykset</h2>
 
+<br />
+<!-- Lisäyslomakkeen paikka -->
+<div id="add-div"></div>
+<br />
+
+<h1>Ohjelmointitermit</h1>
+
+<h2>Löydä ohjelmointitermit ja niiden selitykset</h2>
+<a onclick="showaddform()" class="btn btn-primary">Lisää uusi termi</a>
+
+<br/>
+<br/>
 {% for t in termit %} 
 
 <div class="card" style="width: 50rem;">
@@ -40,4 +49,36 @@
     </div>
 </div>
 {%endfor%}
+
+<script>
+
+    let y = `
+    <h2>Kirjoita ohejlmointitermi ja siihen selitys</h2>
+    
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <form method="post" action="/add-termit/">
+                {%csrf_token %}
+                <input class="card-text" type="text" placeholder="termi" name="termi">
+                <input class="card-text" type="text" placeholder="termi englanniksi" name="term">
+                <input class="card-text" type="text" placeholder="selitys" name="selitys">
+                <br />
+                
+
+                <br/>
+                <input type="submit" value="Confirm" class="btn btn-success btn-sm" name="">
+                <input type="submit" id="hide-btn" class="btn btn-secondary btn-sm" onclick="hideaddform()" value="Cancel" name="">
+            </form>
+        </div>
+    </div>`
+
+    function showaddform() {
+        document.getElementById("add-div").innerHTML = y
+    }
+
+    function hideaddform() {
+        document.getElementById("add-div").innerHTML = ""
+    }
+
+</script>
 {% endblock %}

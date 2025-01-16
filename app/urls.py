@@ -1,5 +1,5 @@
 from django.urls import include, path
-from .views import landingview, termitview
+from .views import landingview, termitview, addtermit
 from . import views
 
 urlpatterns = [
@@ -7,5 +7,6 @@ urlpatterns = [
     #path('index/', landingview),
     path('', landingview),
     #TERMIT URL
-    path('termit/', termitview)
+    path('termit/', termitview),
+    path('add-termit/', addtermit)
 ]
